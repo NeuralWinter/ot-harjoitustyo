@@ -1,0 +1,81 @@
+commit 4f7efdca51b8236f0f567faed3de889e34a56ccf
+Author: Benjamin Heikkinen <benjamin.la.heikkinen@helsinki.fi>
+Date:   Tue Mar 17 20:21:42 2026 +0200
+
+    tiedosto.txt uudelleennimetty eka.txt:ksi
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit f3673794ed9e7e46bd33f9413404836116972e77
+Author: Benjamin Heikkinen <benjamin.la.heikkinen@helsinki.fi>
+Date:   Tue Mar 17 20:20:55 2026 +0200
+
+    toinen.txt poistettu
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit c389118da4b7477c512163b4484c0d879fe67dc0
+Author: Benjamin Heikkinen <benjamin.la.heikkinen@helsinki.fi>
+Date:   Tue Mar 17 20:16:28 2026 +0200
+
+    tekstia muokattu
+
+ tiedosto.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit a346fb2d4eb633ecd581579c8cb72018e4090b74
+Author: Benjamin Heikkinen <benjamin.la.heikkinen@helsinki.fi>
+Date:   Tue Mar 17 20:16:27 2026 +0200
+
+    paljon tekstia lisatty
+
+ tiedosto.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 4e1c42f171d55a63a1c611df26b5dbdbf59e8430
+Author: Benjamin Heikkinen <benjamin.la.heikkinen@helsinki.fi>
+Date:   Tue Mar 17 20:12:52 2026 +0200
+
+    stuff hakemisto lisatty
+
+ stuff/joku.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit d173f71ee05a93fc1305b972b4b2e09255b61be9
+Author: Benjamin Heikkinen <benjamin.la.heikkinen@helsinki.fi>
+Date:   Tue Mar 17 20:09:59 2026 +0200
+
+    muutoksia tiedostoihin
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit 9e838f6e9981e462bdf18262c5629c7112bffec5
+Author: Benjamin Heikkinen <benjamin.la.heikkinen@helsinki.fi>
+Date:   Tue Mar 17 20:09:37 2026 +0200
+
+    kolmas.txt luotu
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 5ccb66571678ee8237f6446a0b17e142162dd920
+Author: Benjamin Heikkinen <benjamin.la.heikkinen@helsinki.fi>
+Date:   Tue Mar 17 20:07:48 2026 +0200
+
+    muutos ja lisäys
+
+ toinen.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 4fc46b072bd795b2aa9bedd3417c8d691a131600
+Author: Benjamin Heikkinen <benjamin.la.heikkinen@helsinki.fi>
+Date:   Tue Mar 17 20:02:11 2026 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)

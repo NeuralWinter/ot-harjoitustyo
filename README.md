@@ -13,3 +13,8 @@ paikallinen muutos
 ## Harjoitustyö
 
 Sovellus on **Dungeons & Dragons 5e** -hahmonluontityökalu, joka opastaa käyttäjää *askel askeleelta* hahmon luonnissa vaihtoehtojen joukosta ja tulostaa lopuksi valmiin character sheetin PDF-muodossa.
+
+## Dokumentaatio
+
+- [Vaatimusmäärittely](dokumentaatio/vaatimusmaarittely.md)
+- [Työaikakirjanpito](dokumentaatio/tyoaikakirjanpito.md)

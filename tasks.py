@@ -1,7 +1,11 @@
 from invoke import task
 from sys import platform
 
+# En itse oikein hoksannut miten saisin tämän onnistumaan,
+# kun itselläni on käytössä Windows kone, mutta Claude generoi
+# tämmöisen vaihtoehdoksi, joten toivon että se toimii!
 
+# generoitu koodi alkaa
 @task
 def start(ctx):
     ctx.run("python3 src/index.py", pty=platform != "win32")
@@ -17,3 +21,4 @@ def coverage(ctx):
 @task(coverage)
 def coverage_report(ctx):
     ctx.run("coverage html", pty=platform != "win32")
+# generoitu koodi päättyy

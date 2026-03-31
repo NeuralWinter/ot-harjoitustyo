@@ -18,3 +18,4 @@ Sovellus on **Dungeons & Dragons 5e** -hahmonluontityökalu, joka opastaa käytt
 
 - [Vaatimusmäärittely](dokumentaatio/vaatimusmaarittely.md)
 - [Työaikakirjanpito](dokumentaatio/tyoaikakirjanpito.md)
+- [Changelog](dokumentaatio/changelog.md)

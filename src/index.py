@@ -1,4 +1,4 @@
-from ui.character_creation import CharacterCreation
+from ui.character_creation import CharacterCreation  # pylint: disable=import-error
 
 
 def main():

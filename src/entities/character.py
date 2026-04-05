@@ -14,4 +14,7 @@ class Character:
         }
 
     def __str__(self):
-        return f"{self.name} - Race: {self.race}, Class: {self.character_class}, Level: {self.level}"
+        return (
+            f"{self.name} - Race: {self.race}, "
+            f"Class: {self.character_class}, Level: {self.level}"
+        )

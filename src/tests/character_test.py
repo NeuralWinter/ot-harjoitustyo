@@ -1,6 +1,8 @@
 import unittest
 from entities.character import Character
 from entities.race import RACES
+from entities.background import BACKGROUNDS
+from entities.skills import calculate_skill_value
 
 
 class TestCharacter(unittest.TestCase):
@@ -45,3 +47,22 @@ class TestCharacter(unittest.TestCase):
     def test_get_modifier_negative(self):
         self.character.stats["charisma"] = 8
         self.assertEqual(self.character.get_modifier("charisma"), -1)
+
+class TestBackground(unittest.TestCase):
+    def test_background_has_correct_skills(self):
+        criminal = BACKGROUNDS["Criminal"]
+        self.assertIn("deception", criminal.skill_proficiencies)
+        self.assertIn("stealth", criminal.skill_proficiencies)
+
+class TestSkills(unittest.TestCase):
+    def test_skill_value_without_proficiency(self):
+        stats = {"dexterity": 14, "strength": 10, "constitution": 10,
+                 "intelligence": 10, "wisdom": 10, "charisma": 10}
+        value = calculate_skill_value("acrobatics", stats, [])
+        self.assertEqual(value, 2)
+
+    def test_skill_value_with_proficiency(self):
+        stats = {"dexterity": 14, "strength": 10, "constitution": 10,
+                 "intelligence": 10, "wisdom": 10, "charisma": 10}
+        value = calculate_skill_value("acrobatics", stats, ["acrobatics"])
+        self.assertEqual(value, 4)

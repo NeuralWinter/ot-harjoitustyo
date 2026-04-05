@@ -3,7 +3,7 @@ from sys import platform
 
 # En itse oikein hoksannut miten saisin tämän onnistumaan,
 # kun itselläni on käytössä Windows kone, mutta Claude generoi
-# tämmöisen vaihtoehdoksi, joten toivon että se toimii!
+# tämmöisen vaihtoehdoksi, joten toivon että se toimii! Koitan ens
 
 # generoitu koodi alkaa
 @task
@@ -17,7 +17,13 @@ def test(ctx):
 @task
 def coverage(ctx):
     ctx.run("coverage run --branch -m pytest src", pty=platform != "win32")
+# generoitu koodi päättyy
 
+@task
+def lint(ctx):
+    ctx.run("pylint src", pty=platform != "win32")
+
+# generoitu koodi alkaa
 @task(coverage)
 def coverage_report(ctx):
     ctx.run("coverage html", pty=platform != "win32")

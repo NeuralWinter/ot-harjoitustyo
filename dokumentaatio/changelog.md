@@ -15,4 +15,10 @@
 - Käyttäjä voi jakaa stat-arvot haluamiinsa ominaisuuksiin
 - Rodun stat-bonukset lisätään automaattisesti hahmon statseihin
 - Lisätty get_modifier-metodi joka laskee D&D:n mukaisen modifierin
+- Lisätty Background-osio (Acolyte, Criminal, Soldier, Sage, Folk Hero)
+- Lisätty Skills-järjestelmä, joka laskee taitoarvot statsien perusteella
+- Luokan valinta rajoittaa nyt skill proficiency valintoja
+- Background antaa automaattisesti 2 skill proficiencya
+- Parannettu virheenkäsittelyä - virheelliset syötteet käsitellään nyt
+- Lisätty testit Background ja Skills luokille
 - Lisätty pylint koodin laadun tarkistukseen, koodi 10/10

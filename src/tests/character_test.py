@@ -3,7 +3,8 @@ from entities.character import Character
 from entities.race import RACES
 from entities.background import BACKGROUNDS
 from entities.skills import calculate_skill_value
-
+from entities.stats import roll_4d6_drop_lowest
+from entities.character_class import CLASSES
 
 class TestCharacter(unittest.TestCase):
     def setUp(self):
@@ -66,3 +67,22 @@ class TestSkills(unittest.TestCase):
                  "intelligence": 10, "wisdom": 10, "charisma": 10}
         value = calculate_skill_value("acrobatics", stats, ["acrobatics"])
         self.assertEqual(value, 4)
+
+class TestStats(unittest.TestCase):
+    def test_roll_4d6_drop_lowest_range(self):
+        for _ in range(1000):
+            result = roll_4d6_drop_lowest()
+            self.assertTrue(3 <= result <= 18)
+
+class TestCharacterClass(unittest.TestCase):
+    def test_fighter_has_correct_skill_count(self):
+        fighter = CLASSES["Fighter"]
+        self.assertEqual(fighter.skill_count, 2)
+
+    def test_wizard_allowed_skills_contains_arcana(self):
+        wizard = CLASSES["Wizard"]
+        self.assertIn("arcana", wizard.allowed_skills)
+
+    def test_rogue_has_four_skill_choices(self):
+        rogue = CLASSES["Rogue"]
+        self.assertEqual(rogue.skill_count, 4)

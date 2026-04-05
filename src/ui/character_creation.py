@@ -93,13 +93,14 @@ class CharacterCreation:
 
     def _choose_class_skills(self, character, character_class):
         available_skills = [
-            s for s in SKILLS if s not in character.skill_proficiencies
+            s for s in character_class.allowed_skills
+            if s not in character.skill_proficiencies
         ]
-        print("\nChoose 2 skill proficiencies for your class:")
-        for i, skill in enumerate(available_skills, 1):
-            print(f"{i}. {skill.replace('_', ' ').capitalize()}")
 
-        for _ in range(2):
+        for i in range(character_class.skill_count):
+            print(f"\nChoose skill proficiency {i + 1}/{character_class.skill_count}:")
+            for j, skill in enumerate(available_skills, 1):
+                print(f"{j}. {skill.replace('_', ' ').capitalize()}")
             choice = self._get_valid_number("Enter number: ", 1, len(available_skills))
             skill = available_skills[choice - 1]
             character.add_skill_proficiency(skill)

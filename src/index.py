@@ -1,4 +1,5 @@
 from ui.character_creation import CharacterCreation  # pylint: disable=import-error
+# pylint herjaa virheestä, koska minulla on Windows kone, joten poistin käytöstä...
 
 
 def main():

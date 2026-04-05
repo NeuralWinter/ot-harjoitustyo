@@ -8,3 +8,11 @@
 - Lisätty CharacterClass-luokka, joka sisältää luokkien tiedot
 - Lisätty CharacterCreation-luokka, joka vastaa käyttöliittymästä
 - Testattu Character-luokan perustoiminnallisuus
+
+## Viikko 4
+
+- Lisätty stats-osio: käyttäjä voi valita standard array tai 4d6 drop lowest metodin
+- Käyttäjä voi jakaa stat-arvot haluamiinsa ominaisuuksiin
+- Rodun stat-bonukset lisätään automaattisesti hahmon statseihin
+- Lisätty get_modifier-metodi joka laskee D&D:n mukaisen modifierin
+- Lisätty pylint koodin laadun tarkistukseen, koodi 10/10

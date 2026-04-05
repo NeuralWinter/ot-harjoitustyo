@@ -6,11 +6,11 @@ Sovellus on Dungeons & Dragons 5. edition mukainen hahmonluontityökalu, joka op
 ## Suunnitellut toiminnallisuudet
 
 ### Perusversio
-- Käyttäjä voi valita hahmon rodun, joistain rajatuista roduista
-- Käyttäjä voi valita hahmon luokan, joistain rajatuista luokista
-- Käyttäjä voi jakaa hahmon ominaisuuspisteet
-- Käyttäjä voi syöttää hahmon nimen ja taustatiedot
-- Sovellus laskee automaattisesti hahmon johdetut arvot
+- Käyttäjä voi valita hahmon rodun, joistain rajatuista roduista "tehty"
+- Käyttäjä voi valita hahmon luokan, joistain rajatuista luokista "tehty"
+- Käyttäjä voi jakaa hahmon ominaisuuspisteet "tehty"
+- Käyttäjä voi syöttää hahmon nimen ja taustatiedot "tehty osittain, taustatiedot puuttuvat"
+- Sovellus laskee automaattisesti hahmon johdetut arvot "tehty"
 - Valmis hahmo voidaan tallentaa tiedostoon
 
 ### Jatkokehitysideat

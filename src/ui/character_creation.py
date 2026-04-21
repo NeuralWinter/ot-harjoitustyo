@@ -4,6 +4,7 @@ from entities.character import Character
 from entities.stats import STANDARD_ARRAY, STAT_NAMES, roll_stats
 from entities.background import BACKGROUNDS
 from entities.skills import SKILLS
+from entities.character_repository import CharacterRepository
 
 
 class CharacterCreation:
@@ -27,6 +28,10 @@ class CharacterCreation:
 
         self._choose_class_skills(character, character_class)
         self._print_character(character)
+
+        repository = CharacterRepository()
+        filename = repository.save(character)
+        print(f"\nCharacter saved to: {filename}")
 
         return character
 

@@ -1,10 +1,12 @@
-from ui.character_creation import CharacterCreation  # pylint: disable=import-error
+import tkinter as tk
+from ui.gui import CharacterCreatorGUI  # pylint: disable=import-error
 # pylint herjaa virheestä, koska minulla on Windows kone, joten poistin käytöstä...
 
 
 def main():
-    character_creation = CharacterCreation()
-    character_creation.create_character()
+    root = tk.Tk()
+    CharacterCreatorGUI(root)
+    root.mainloop()
 
 
 if __name__ == "__main__":

@@ -51,3 +51,25 @@ classDiagram
         description
     }
 ```
+## Sekvenssikaavio: Hahmon luonti ja tallennus
+
+```mermaid
+sequenceDiagram
+    actor Käyttäjä
+    participant GUI as CharacterCreatorGUI
+    participant Character
+    participant RACES
+    participant CharacterRepository
+
+    Käyttäjä->>GUI: Syöttää nimen, rodun, luokan, taustan, statsit ja skillsit
+    GUI->>RACES: Hakee valitun rodun tiedot
+    RACES-->>GUI: Race-olio
+    GUI->>Character: Character(nimi)
+    GUI->>Character: set_stats(statsit, rotu)
+    Character-->>GUI: Statsit rodun bonuksineen
+    GUI->>Character: add_skill_proficiency(skill)
+    Käyttäjä->>GUI: Painaa "Save Character"
+    GUI->>CharacterRepository: save(character)
+    CharacterRepository-->>GUI: filename
+    GUI-->>Käyttäjä: "Character Saved!"
+```

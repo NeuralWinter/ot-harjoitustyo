@@ -22,3 +22,11 @@
 - Parannettu virheenkäsittelyä - virheelliset syötteet käsitellään nyt
 - Lisätty testit Background ja Skills luokille
 - Lisätty pylint koodin laadun tarkistukseen, koodi 10/10
+
+## Viikko 5
+
+- Lisätty graafinen käyttöliittymä tkinterilla
+- Käyttäjä voi kulkea edestakaisin hahmonluontivaiheissa
+- Lisätty nopanheitto statsien generointiin
+- Yhteenvetonäkymä hahmon tiedoista
+- Hahmo tallentuu JSON-tiedostoon

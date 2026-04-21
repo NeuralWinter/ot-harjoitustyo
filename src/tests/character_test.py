@@ -1,4 +1,7 @@
 import unittest
+import os
+import json
+from entities.character_repository import CharacterRepository
 from entities.character import Character
 from entities.race import RACES
 from entities.background import BACKGROUNDS
@@ -86,3 +89,42 @@ class TestCharacterClass(unittest.TestCase):
     def test_rogue_has_four_skill_choices(self):
         rogue = CLASSES["Rogue"]
         self.assertEqual(rogue.skill_count, 4)
+
+class TestCharacterRepository(unittest.TestCase):
+    def setUp(self):
+        self.repository = CharacterRepository("test_characters")
+        self.character = Character("TestChar")
+        self.character.race = "Human"
+        self.character.character_class = "Fighter"
+        self.character.background = "Soldier"
+        self.character.stats = {
+            "strength": 15, "dexterity": 14, "constitution": 13,
+            "intelligence": 12, "wisdom": 10, "charisma": 8
+        }
+        self.character.skill_proficiencies = ["athletics", "perception"]
+
+    def tearDown(self):
+        import shutil
+        if os.path.exists("test_characters"):
+            shutil.rmtree("test_characters")
+
+    def test_save_creates_file(self):
+        filename = self.repository.save(self.character)
+        self.assertTrue(os.path.exists(filename))
+
+    def test_save_correct_content(self):
+        filename = self.repository.save(self.character)
+        with open(filename, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        self.assertEqual(data["name"], "TestChar")
+        self.assertEqual(data["race"], "Human")
+
+    def test_load_returns_correct_data(self):
+        filename = self.repository.save(self.character)
+        data = self.repository.load(filename)
+        self.assertEqual(data["name"], "TestChar")
+
+    def test_list_characters_returns_saved(self):
+        self.repository.save(self.character)
+        characters = self.repository.list_characters()
+        self.assertIn("testchar.json", characters)

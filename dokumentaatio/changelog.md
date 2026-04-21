@@ -27,6 +27,10 @@
 
 - Lisätty graafinen käyttöliittymä tkinterilla
 - Käyttäjä voi kulkea edestakaisin hahmonluontivaiheissa
-- Lisätty nopanheitto statsien generointiin
+- Lisätty nopanheitto statsien generointiin uudessa käyttöliittymässä
 - Yhteenvetonäkymä hahmon tiedoista
 - Hahmo tallentuu JSON-tiedostoon
+- Hahmoja voi tallentaa useamman
+- Lisätty uusia testejä
+- Testcoverage report 83% ja pylint 10/10!
+- Lisätty uusi sekvenssikaavio hahmonluonnista ja tallennuksesta

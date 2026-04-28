@@ -46,7 +46,14 @@ class CharacterCreatorGUI:
             text="Create New Character",
             font=("Arial", 12),
             command=self.show_name_input
-        ).pack(pady=20)
+        ).pack(pady=10)
+
+        tk.Button(
+            self.current_frame,
+            text="Load Character",
+            font=("Arial", 12),
+            command=self.show_load_character
+        ).pack(pady=10)
 
     def show_name_input(self):
         self.clear_frame()
@@ -640,6 +647,151 @@ class CharacterCreatorGUI:
     def return_to_main(self):
         self.character_data = {}
         self.show_welcome()
+
+    def show_load_character(self):
+        self.clear_frame()
+
+        tk.Label(
+            self.current_frame,
+            text="Load Character",
+            font=("Arial", 16, "bold")
+        ).pack(pady=20)
+
+        repository = CharacterRepository()
+        characters = repository.list_characters()
+
+        if not characters:
+            tk.Label(
+                self.current_frame,
+                text="No saved characters found.",
+                font=("Arial", 12)
+            ).pack(pady=10)
+        else:
+            tk.Label(
+                self.current_frame,
+                text="Select a character to load:",
+                font=("Arial", 12)
+            ).pack(pady=10)
+
+            for character_file in characters:
+                name = character_file.replace(".json", "").replace("_", " ").title()
+                tk.Button(
+                    self.current_frame,
+                    text=name,
+                    font=("Arial", 12),
+                    command=lambda f=character_file: self.load_character(f)
+                ).pack(pady=5)
+
+        tk.Button(
+            self.current_frame,
+            text="Back",
+            font=("Arial", 12),
+            command=self.show_welcome
+        ).pack(pady=20)
+
+    def load_character(self, filename):
+        repository = CharacterRepository()
+        data = repository.load(f"saved_characters/{filename}")
+
+        race = RACES[data["race"]]
+        character = Character(data["name"])
+        character.race = data["race"]
+        character.character_class = data["character_class"]
+        character.background = data["background"]
+        character.set_stats(data["stats"])
+        character.skill_proficiencies = data["skill_proficiencies"]
+
+        self.character_data = data
+        self.show_loaded_character(character)
+
+    def show_loaded_character(self, character):
+        if self.current_frame:
+            self.current_frame.destroy()
+        self.current_frame = tk.Frame(self.root)
+        self.current_frame.pack(fill="both", expand=True)
+
+        canvas = tk.Canvas(self.current_frame)
+        scrollbar = ttk.Scrollbar(
+            self.current_frame,
+            orient="vertical",
+            command=canvas.yview
+        )
+        scrollable_frame = tk.Frame(canvas)
+
+        scrollable_frame.bind(
+            "<Configure>",
+            lambda e: canvas.configure(scrollregion=canvas.bbox("all"))
+        )
+
+        canvas.create_window((0, 0), window=scrollable_frame, anchor="nw")
+        canvas.configure(yscrollcommand=scrollbar.set)
+        canvas.bind(
+            "<Configure>",
+            lambda e: canvas.itemconfig(canvas.find_all()[0], width=e.width)
+        )
+        canvas.pack(side="left", fill="both", expand=True)
+        scrollbar.pack(side="right", fill="y")
+
+        tk.Label(
+            scrollable_frame,
+            text="Loaded Character",
+            font=("Arial", 16, "bold")
+        ).pack(pady=10)
+
+        tk.Label(
+            scrollable_frame,
+            text=str(character),
+            font=("Arial", 12)
+        ).pack()
+
+        tk.Label(
+            scrollable_frame,
+            text=f"Background: {character.background}",
+            font=("Arial", 12)
+        ).pack()
+
+        stat_order = ["strength", "dexterity", "constitution",
+                    "wisdom", "intelligence", "charisma"]
+
+        tk.Label(
+            scrollable_frame,
+            text="Stats:",
+            font=("Arial", 12, "bold")
+        ).pack(pady=5)
+
+        for stat in stat_order:
+            value = character.stats[stat]
+            modifier = character.get_modifier(stat)
+            sign = "+" if modifier >= 0 else ""
+            tk.Label(
+                scrollable_frame,
+                text=f"{stat.capitalize()}: {value} ({sign}{modifier})",
+                font=("Arial", 11)
+            ).pack()
+
+        tk.Label(
+            scrollable_frame,
+            text="Skill Proficiencies:",
+            font=("Arial", 12, "bold")
+        ).pack(pady=5)
+
+        for skill in sorted(character.skill_proficiencies):
+            value = calculate_skill_value(
+                skill, character.stats, character.skill_proficiencies
+            )
+            sign = "+" if value >= 0 else ""
+            tk.Label(
+                scrollable_frame,
+                text=f"{skill.replace('_', ' ').capitalize()}: {sign}{value}",
+                font=("Arial", 11)
+            ).pack()
+
+        tk.Button(
+            scrollable_frame,
+            text="Back to Main Menu",
+            font=("Arial", 12),
+            command=self.return_to_main
+        ).pack(pady=20)
 
 def main():
     root = tk.Tk()

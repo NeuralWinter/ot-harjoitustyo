@@ -8,6 +8,7 @@ from entities.character_repository import CharacterRepository
 from entities.character_class import CLASSES
 from entities.background import BACKGROUNDS
 from entities.skills import calculate_skill_value
+from entities.pdf_generator import PDFGenerator  # pylint: disable=import-error
 
 class CharacterCreatorGUI:
     def __init__(self, root):
@@ -639,10 +640,28 @@ class CharacterCreatorGUI:
 
         tk.Button(
             self.current_frame,
+            text="Export as PDF",
+            font=("Arial", 12),
+            command=lambda: self.export_pdf(character)
+        ).pack(pady=10)
+
+        tk.Button(
+            self.current_frame,
             text="Return to Main Menu",
             font=("Arial", 12),
             command=self.return_to_main
-        ).pack(pady=20)
+        ).pack(pady=10)
+
+    def export_pdf(self, character):
+        pdf_generator = PDFGenerator()
+        filename = f"saved_characters/{character.name.lower().replace(' ', '_')}.pdf"
+        pdf_generator.generate(character, filename)
+        tk.Label(
+            self.current_frame,
+            text=f"✓ PDF exported to: {filename}",
+            font=("Arial", 10),
+            fg="green"
+        ).pack(pady=5)
 
     def return_to_main(self):
         self.character_data = {}
@@ -785,6 +804,13 @@ class CharacterCreatorGUI:
                 text=f"{skill.replace('_', ' ').capitalize()}: {sign}{value}",
                 font=("Arial", 11)
             ).pack()
+
+        tk.Button(
+            scrollable_frame,
+            text="Export as PDF",
+            font=("Arial", 12),
+            command=lambda: self.export_pdf(character)
+        ).pack(pady=10)
 
         tk.Button(
             scrollable_frame,

@@ -37,4 +37,5 @@
 
 ## Viikko 5
 - Lisätty luotujen hahmojen lataaminen JSON tiedostoista
-- Dokumentaatiota päivitetty
+- Dokumentaatiota päivitetty, kayttoohje.md lisätty
+- Hahmojen PDF-tulostus onnistuu nyt

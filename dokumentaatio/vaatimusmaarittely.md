@@ -15,7 +15,7 @@ Sovellus on Dungeons & Dragons 5. edition mukainen hahmonluontityökalu, joka op
 
 ### Jatkokehitysideat
 - Graafinen käyttöliittymä "tehty"
-- PDF-tulostus
+- PDF-tulostus "tehty"
 - Useamman hahmon tallentaminen "tehty"
 - Varusteiden valinta
 - Loitsujen valinta loitsijoille

@@ -34,3 +34,7 @@
 - Lisätty uusia testejä
 - Testcoverage report 83% ja pylint 10/10!
 - Lisätty uusi sekvenssikaavio hahmonluonnista ja tallennuksesta
+
+## Viikko 5
+- Lisätty luotujen hahmojen lataaminen JSON tiedostoista
+- Dokumentaatiota päivitetty

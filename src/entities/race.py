@@ -1,5 +1,15 @@
 class Race:
+    """Represents a D&D 5e playable race."""
+
     def __init__(self, name, stat_bonuses, traits):
+        """Initialize a race with its properties.
+        
+        Aargs:
+            name: The race name
+            stat_bonuses: Dictionary of ability score bonuses
+            traits: List of racial trait names
+        """
+
         self.name = name
         self.stat_bonuses = stat_bonuses
         self.traits = traits

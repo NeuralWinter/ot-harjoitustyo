@@ -1,3 +1,5 @@
+"""Module containing D&D 5e skills and their associated ability scores."""
+
 SKILLS = {
     "acrobatics": "dexterity",
     "animal_handling": "wisdom",
@@ -21,8 +23,18 @@ SKILLS = {
 
 PROFICIENCY_BONUS = 2
 
-
 def calculate_skill_value(skill, stats, proficiencies):
+    """Calculate the total value for a skill check.
+
+    Args:
+        skill: The skill name
+        stats: Dictionary of ability scores
+        proficiencies: List of skill proficiencies the character has
+
+    Returns:
+        The skill value as an integer
+    """
+
     stat = SKILLS[skill]
     modifier = (stats[stat] - 10) // 2
     if skill in proficiencies:

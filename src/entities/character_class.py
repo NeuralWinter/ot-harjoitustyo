@@ -1,5 +1,16 @@
 class CharacterClass:
+    """Represents a D&D 5e character class."""
+
     def __init__(self, name, traits, skill_config, class_config):
+        """Initialize a character class with its properties.
+
+        Args:
+            name: The class name
+            traits: List of class feature names
+            skill_config: Dictionary containing allowed_skills and skill_count
+            class_config: Dictionary containing hit_die and primary_stats
+        """
+
         self.name = name
         self.hit_die = class_config["hit_die"]
         self.primary_stats = class_config["primary_stats"]

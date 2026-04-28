@@ -1,5 +1,15 @@
 class Background:
+    """Represents a D&D 5e character background."""
+
     def __init__(self, name, skill_proficiencies, description):
+        """Initialize a background with its properties.
+
+        Args:
+            name: The background name
+            skill_proficiencies: List of skills granted by this background
+            description: Short description of the background
+        """
+
         self.name = name
         self.skill_proficiencies = skill_proficiencies
         self.description = description

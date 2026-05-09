@@ -35,7 +35,13 @@
 - Testcoverage report 83% ja pylint 10/10!
 - Lisätty uusi sekvenssikaavio hahmonluonnista ja tallennuksesta
 
-## Viikko 5
+## Viikko 6
 - Lisätty luotujen hahmojen lataaminen JSON tiedostoista
 - Dokumentaatiota päivitetty, kayttoohje.md lisätty
 - Hahmojen PDF-tulostus onnistuu nyt
+
+## Viikko 7
+- Poistettu vanha character_creation.py, koska sitä ei enää käytetä
+- Tarkistettu testikattavuus, joka olikin jäänyt viime kerran päivitysten jälkeen alle tavoitteen, nyt se on 93% ja lisätty kuva dokumentaatioon
+- Tarkistettu ja päivitetty arkkitehtuuria, varsinkin kun character_creation.py on korvattu
+- Lisätty tuntikirjanpito ja päivitetty changelog

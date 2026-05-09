@@ -10,6 +10,7 @@ Sovellus on **Dungeons & Dragons 5e** -hahmonluontityökalu, joka opastaa käytt
 - [Arkkitehtuuri](dokumentaatio/arkkitehtuuri.md)
 - [Release](https://github.com/NeuralWinter/ot-harjoitustyo/releases/tag/viikko6)
 - [Käyttöohje](dokumentaatio/kayttoohje.md)
+- [Testausdokumentti](dokumentaatio/testausdokumentti.md)
 
 ## Ohjeet
 

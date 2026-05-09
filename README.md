@@ -4,13 +4,13 @@ Sovellus on **Dungeons & Dragons 5e** -hahmonluontityökalu, joka opastaa käytt
 
 ## Dokumentaatio
 
-- [Vaatimusmäärittely](dokumentaatio/vaatimusmaarittely.md)
-- [Työaikakirjanpito](dokumentaatio/tyoaikakirjanpito.md)
-- [Changelog](dokumentaatio/changelog.md)
 - [Arkkitehtuuri](dokumentaatio/arkkitehtuuri.md)
-- [Release](https://github.com/NeuralWinter/ot-harjoitustyo/releases/tag/viikko6)
+- [Changelog](dokumentaatio/changelog.md)
 - [Käyttöohje](dokumentaatio/kayttoohje.md)
 - [Testausdokumentti](dokumentaatio/testausdokumentti.md)
+- [Työaikakirjanpito](dokumentaatio/tyoaikakirjanpito.md)
+- [Vaatimusmäärittely](dokumentaatio/vaatimusmaarittely.md)
+- [Release](https://github.com/NeuralWinter/ot-harjoitustyo/releases/tag/loppupalautus)
 
 ## Ohjeet
 

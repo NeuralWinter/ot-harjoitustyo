@@ -8,6 +8,7 @@ from entities.background import BACKGROUNDS
 from entities.skills import calculate_skill_value
 from entities.stats import roll_4d6_drop_lowest
 from entities.character_class import CLASSES
+from entities.pdf_generator import PDFGenerator
 
 class TestCharacter(unittest.TestCase):
     def setUp(self):
@@ -128,3 +129,28 @@ class TestCharacterRepository(unittest.TestCase):
         self.repository.save(self.character)
         characters = self.repository.list_characters()
         self.assertIn("testchar.json", characters)
+
+class TestPDFGenerator(unittest.TestCase):
+    def setUp(self):
+        self.character = Character("TestPDF")
+        self.character.race = "Human"
+        self.character.character_class = "Fighter"
+        self.character.background = "Soldier"
+        self.character.stats = {
+            "strength": 16, "dexterity": 14, "constitution": 15,
+            "intelligence": 10, "wisdom": 12, "charisma": 8
+        }
+        self.character.skill_proficiencies = ["athletics", "perception"]
+        self.generator = PDFGenerator()
+
+    def tearDown(self):
+        if os.path.exists("test_output.pdf"):
+            os.remove("test_output.pdf")
+
+    def test_generate_creates_pdf_file(self):
+        filename = self.generator.generate(self.character, "test_output.pdf")
+        self.assertTrue(os.path.exists(filename))
+
+    def test_generate_returns_filename(self):
+        filename = self.generator.generate(self.character, "test_output.pdf")
+        self.assertEqual(filename, "test_output.pdf")

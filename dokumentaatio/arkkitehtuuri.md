@@ -12,25 +12,34 @@ Ohjelma on jaettu kolmeen pakkaukseen:
 
 Sovelluksen sovelluslogiikka on jaettu `entities`-pakkaukseen, joka sisältää seuraavat luokat:
 
-- **Character** – vastaa hahmon tiedoista ja laskuista
-- **Race** – sisältää rodun tiedot ja stat-bonukset
-- **CharacterClass** – sisältää luokan tiedot ja sallitut skillsit
-- **Background** – sisältää taustan tiedot ja skill proficiencyt
-- **CharacterRepository** – vastaa hahmojen tallennuksesta ja lataamisesta JSON-tiedostoihin
+- **Character** – vastaa hahmon tiedoista ja laskuista. Sisältää metodit statsien asettamiseen, ability modifier laskentaan ja skill proficiencyjen hallintaan.
+- **Race** – sisältää rodun tiedot ja stat-bonukset. Bonukset lisätään automaattisesti hahmon statseihin rodun valinnan yhteydessä.
+- **CharacterClass** – sisältää luokan tiedot, sallitut skillsit ja skill valintojen määrän.
+- **Background** – sisältää taustan tiedot ja automaattisesti annettavat skill proficiencyt.
+- **CharacterRepository** – vastaa hahmojen tallennuksesta ja lataamisesta JSON-tiedostoihin.
+- **PDFGenerator** – vastaa hahmon character sheetin generoinnista PDF-muotoon reportlab-kirjaston avulla.
 
 Käyttöliittymä on eriytetty `ui`-pakkaukseen, joka sisältää:
 
-- **CharacterCreatorGUI** – graafinen tkinter-käyttöliittymä
-- **CharacterCreation** – tekstipohjainen käyttöliittymä (kehityskäyttöön)
+- **CharacterCreatorGUI** – graafinen tkinter-käyttöliittymä hahmon luontiin, lataamiseen ja PDF-exporttiin.
+
+## Tietojen pysyväistallennus
+
+Hahmot tallennetaan JSON-tiedostoihin `saved_characters`-hakemistoon. Jokainen hahmo tallennetaan omaan tiedostoonsa, jonka nimi muodostuu hahmon nimestä. JSON-tiedosto sisältää hahmon kaikki tiedot: nimen, rodun, luokan, taustan, statsit ja skill proficiencyt.
+
+PDF-tiedostot generoidaan samaan `saved_characters`-hakemistoon reportlab-kirjaston avulla.
 
 ## Luokkakaavio
+
 ```mermaid
 classDiagram
-    CharacterCreation --> Character
-    CharacterCreation --> RACES
-    CharacterCreation --> CLASSES
-    CharacterCreation --> BACKGROUNDS
-    CharacterCreation --> SKILLS
+    CharacterCreatorGUI --> Character
+    CharacterCreatorGUI --> RACES
+    CharacterCreatorGUI --> CLASSES
+    CharacterCreatorGUI --> BACKGROUNDS
+    CharacterCreatorGUI --> SKILLS
+    CharacterCreatorGUI --> CharacterRepository
+    CharacterCreatorGUI --> PDFGenerator
     Character --> Race : race
     Character --> CharacterClass : character_class
     Character --> Background : background
@@ -65,7 +74,16 @@ classDiagram
         skill_proficiencies
         description
     }
+    class CharacterRepository{
+        save()
+        load()
+        list_characters()
+    }
+    class PDFGenerator{
+        generate()
+    }
 ```
+
 ## Sekvenssikaavio: Hahmon luonti ja tallennus
 
 ```mermaid
